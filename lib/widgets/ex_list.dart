@@ -10,9 +10,9 @@ class ExList extends StatelessWidget {
       itemBuilder: (context, index) {
         return ExTile(
             exerciseName:
-                Provider.of<ExData>(context).exerciseData[index].name);
+                Provider.of<ExData>(context).exerciseSelection[index].name);
       },
-      itemCount: Provider.of<ExData>(context).exerciseData.length,
+      itemCount: Provider.of<ExData>(context).exerciseSelection.length,
     ); // return ExTile();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ex_gen/widgets/ex_list.dart';
 import 'package:provider/provider.dart';
+import 'package:ex_gen/models/ex_data.dart';
 
 class GenScreen extends StatelessWidget {
   @override
@@ -29,7 +30,9 @@ class GenScreen extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 primary: Colors.redAccent[400],
               ),
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<ExData>(context).selectExercises();
+              },
             )),
             Expanded(child: ExList()),
           ],
