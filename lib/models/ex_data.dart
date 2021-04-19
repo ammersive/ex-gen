@@ -10,11 +10,10 @@ class ExData extends ChangeNotifier {
     Exercise(name: 'scapular stability'),
     Exercise(name: 'infraspinatus ext rotation'),
     Exercise(name: 'supraspinatus lifts'),
-  ];
-
-  List<Exercise> exerciseSelection = [
     Exercise(name: 'plank'),
   ];
+
+  List<Exercise> exerciseSelection = [];
 
   // unmodifiable version of _exerciseData, for safer read access, maybe use later
   // UnmodifiableListView<Exercise> get exerciseData {
@@ -22,17 +21,14 @@ class ExData extends ChangeNotifier {
   // }
 
   void selectExercises() {
-    // Random rnd = new Random();
-    // exerciseSelection.add(_exerciseData[rnd.nextInt(_exerciseData.length)]);
-    for (var i = 0; i < 3; i++) {
-      randomExercise();
-    } // TODO: fix so repeats not allowed
-    notifyListeners();
-  }
-
-  void randomExercise() {
     Random rnd = new Random();
-    return exerciseSelection
-        .add(_exerciseData[rnd.nextInt(_exerciseData.length)]);
+    Set<Exercise> exerciseSet = {};
+
+    while (exerciseSet.length < 3) {
+      exerciseSet.add(_exerciseData[rnd.nextInt(_exerciseData.length)]);
+    }
+
+    exerciseSelection = exerciseSet.toList();
+    notifyListeners();
   }
 }
