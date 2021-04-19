@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ex_gen/widgets/ex_list.dart';
+import 'package:provider/provider.dart';
 
 class GenScreen extends StatelessWidget {
   @override
