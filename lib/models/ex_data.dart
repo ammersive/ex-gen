@@ -31,4 +31,9 @@ class ExData extends ChangeNotifier {
     exerciseSelection = exerciseSet.toList();
     notifyListeners();
   }
+
+  void updateExercise(Exercise exercise) {
+    exercise.toggleDone();
+    notifyListeners();
+  }
 }

@@ -5,12 +5,18 @@ import 'package:ex_gen/models/ex_data.dart';
 
 class ExList extends StatelessWidget {
   @override
+  //TODO use Consumer?
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
+        var currentExercise =
+            Provider.of<ExData>(context).exerciseSelection[index];
         return ExTile(
-            exerciseName:
-                Provider.of<ExData>(context).exerciseSelection[index].name);
+            exerciseName: currentExercise.name,
+            isStruckThrough: currentExercise.isDone,
+            exTileCallback: () {
+              Provider.of<ExData>(context).updateExercise(currentExercise);
+            });
       },
       itemCount: Provider.of<ExData>(context).exerciseSelection.length,
     ); // return ExTile();
