@@ -16,9 +16,9 @@ class ExData extends ChangeNotifier {
   List<Exercise> exerciseSelection = [];
 
   // unmodifiable version of _exerciseData, for safer read access, maybe use later
-  // UnmodifiableListView<Exercise> get exerciseData {
-  //   return UnmodifiableListView(_exerciseData);
-  // }
+  UnmodifiableListView<Exercise> get exerciseData {
+    return UnmodifiableListView(_exerciseData);
+  }
 
   void selectExercises() {
     Random rnd = new Random();
