@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ex_gen/widgets/ex_list.dart';
 import 'package:provider/provider.dart';
+import 'package:ex_gen/screens/add_ex_screen.dart';
 import 'package:ex_gen/models/ex_data.dart';
 
 class ListScreen extends StatelessWidget {
@@ -25,15 +26,22 @@ class ListScreen extends StatelessWidget {
               height: 30.0,
             ),
             Center(
-                child: ElevatedButton(
-              child: Text("Add"),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.redAccent[400],
-              ),
-              onPressed: () {
-                Provider.of<ExData>(context).selectExercises();
-              },
-            )),
+              child: ElevatedButton(
+                  child: Text("Add"),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.redAccent[400],
+                  ),
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (context) => SingleChildScrollView(
+                          padding: EdgeInsets.only(
+                              bottom: MediaQuery.of(context).viewInsets.bottom),
+                          child: AddExScreen()),
+                    );
+                  }),
+            ),
             Expanded(child: ExList(Provider.of<ExData>(context).exerciseData)),
           ],
         ),

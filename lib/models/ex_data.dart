@@ -36,4 +36,10 @@ class ExData extends ChangeNotifier {
     exercise.toggleDone();
     notifyListeners();
   }
+
+  void addExercise(String newExTitle) {
+    final exercise = Exercise(name: newExTitle);
+    _exerciseData.add(exercise);
+    notifyListeners();
+  }
 }
